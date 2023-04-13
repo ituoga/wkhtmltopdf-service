@@ -22,7 +22,7 @@ func main() {
 			w.WriteHeader(http.StatusUnauthorized)
 			return
 		}
-
+		wk.SetPath("/bin")
 		pdfg, err := wk.NewPDFGenerator()
 		if err != nil {
 			log.Fatal(err)
