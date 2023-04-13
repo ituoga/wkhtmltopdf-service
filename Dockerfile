@@ -11,7 +11,7 @@ COPY *.go ./
 RUN CGO_ENABLED=0 go build -o /service
 
 
-FROM surnet/alpine-wkhtmltopdf
+FROM ghcr.io/surnet/alpine-wkhtmltopdf:3.17.0-0.12.6-full
 WORKDIR /
 COPY --from=compiler /service /
 
