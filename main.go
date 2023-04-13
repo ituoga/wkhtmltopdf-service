@@ -25,7 +25,7 @@ func main() {
 		// wk.SetPath("/bin/wkhtmltopdf")
 		pdfg, err := wk.NewPDFGenerator()
 		if err != nil {
-			log.Fatal(err)
+			log.Fatalf("NewPDFGenerator %v", err)
 		}
 
 		pdfg.Dpi.Set(300)
@@ -42,12 +42,12 @@ func main() {
 
 		err = pdfg.Create()
 		if err != nil {
-			log.Fatal(err)
+			log.Fatalf("pdfg.Create: %v", err)
 		}
 
 		_, err = w.Write(pdfg.Buffer().Bytes())
 		if err != nil {
-			log.Fatal(err)
+			log.Fatal("Write: %v", err)
 		}
 	})
 	log.Printf("Starting server on port :" + Port)
