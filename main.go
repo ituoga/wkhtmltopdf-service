@@ -29,7 +29,7 @@ func main() {
 		}
 
 		pdfg.Dpi.Set(300)
-		pdfg.Orientation.Set(wk.OrientationLandscape)
+		pdfg.Orientation.Set(wk.OrientationPortrait)
 		pdfg.Grayscale.Set(true)
 
 		page := wk.NewPageReader(r.Body)
