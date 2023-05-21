@@ -20,6 +20,7 @@ func main() {
 	http.HandleFunc("/input", func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Access-Control-Allow-Origin", "*")
 		w.Header().Set("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+		w.Header().Set("Access-Control-Allow-Credentials", "true")
 		w.Header().Set("content-security-policy", "default-src 'none'")
 
 		if r.Header.Get("X-Token") != XToken {
