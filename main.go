@@ -21,7 +21,13 @@ func main() {
 		w.Header().Set("Access-Control-Allow-Origin", "*")
 		w.Header().Set("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
 		w.Header().Set("Access-Control-Allow-Credentials", "true")
+		w.Header().Set("Access-Control-Allow-Headers", "X-Token, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization")
 		w.Header().Set("content-security-policy", "default-src 'none'")
+
+		if r.Method == "OPTIONS" {
+			return
+		}
+		// write cors headers
 
 		if r.Header.Get("X-Token") != XToken {
 			w.WriteHeader(http.StatusUnauthorized)
