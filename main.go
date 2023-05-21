@@ -25,6 +25,7 @@ func main() {
 		// wk.SetPath("/bin/wkhtmltopdf")
 		w.Header().Set("Access-Control-Allow-Origin", "*")
 		w.Header().Set("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+		w.Header().Set("content-security-policy", "default-src 'none'")
 
 		pdfg, err := wk.NewPDFGenerator()
 		if err != nil {
