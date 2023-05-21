@@ -23,6 +23,7 @@ func main() {
 			return
 		}
 		// wk.SetPath("/bin/wkhtmltopdf")
+		w.Header().Set("Access-Control-Allow-Origin", "*")
 		pdfg, err := wk.NewPDFGenerator()
 		if err != nil {
 			log.Fatalf("NewPDFGenerator %v", err)
