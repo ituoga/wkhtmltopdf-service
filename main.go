@@ -18,14 +18,15 @@ func main() {
 		log.Fatal("TOKEN is not set")
 	}
 	http.HandleFunc("/input", func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Access-Control-Allow-Origin", "*")
+		w.Header().Set("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+		w.Header().Set("content-security-policy", "default-src 'none'")
+
 		if r.Header.Get("X-Token") != XToken {
 			w.WriteHeader(http.StatusUnauthorized)
 			return
 		}
 		// wk.SetPath("/bin/wkhtmltopdf")
-		w.Header().Set("Access-Control-Allow-Origin", "*")
-		w.Header().Set("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
-		w.Header().Set("content-security-policy", "default-src 'none'")
 
 		pdfg, err := wk.NewPDFGenerator()
 		if err != nil {
